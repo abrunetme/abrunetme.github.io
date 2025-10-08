@@ -1,4 +1,4 @@
-baseURL = 'https://abrunet.me/'
+baseURL = '/'
 languageCode = 'fr-fr'
 title = 'abrunet.me'
 theme = 'abrunet'
