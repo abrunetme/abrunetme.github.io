@@ -1,0 +1,26 @@
+# Hugo
+public/
+resources/
+.hugo_build.lock
+.cache/
+
+# Hugo executables
+hugo
+hugo.exe
+hugo.darwin
+hugo.linux
+hugo.windows
+
+# Temp files
+*.swp
+*.swo
+*.tmp
+*~
+.DS_Store
+Thumbs.db
+*.log
+*.bak
+
+# IDE files
+.vscode/
+.idea/

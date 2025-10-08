@@ -1,0 +1,35 @@
+html {
+    --body-margin-top: 1em;
+    --body-margin-bottom: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+
+    margin: var(--body-margin-top) 1em var(--body-margin-bottom) 1em;
+    height: calc(100vh - var(--body-margin-top) - var(--body-margin-bottom));
+}
+
+body > header {
+    margin-bottom: 1em;
+}
+
+body > main {
+    flex-grow: 1;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+.highlight {
+    margin: 1rem 0;
+}
+
+.site-title {
+    font-size: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    margin-bottom: initial;
+}

@@ -1,0 +1,10 @@
+baseURL = 'https://abrunet.me/'
+languageCode = 'fr-fr'
+title = 'abrunet.me'
+theme = 'abrunet'
+
+[markup]
+  [markup.highlight]
+    noClasses = true
+    style = "friendly"
+    lineNos = true
