@@ -15,6 +15,10 @@ body > main {
     flex-grow: 1;
 }
 
+body > footer > p {
+    margin-bottom: inherit;
+}
+
 .site-title {
     font-size: inherit;
     font-weight: inherit;
