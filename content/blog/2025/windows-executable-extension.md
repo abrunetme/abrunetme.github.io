@@ -2,12 +2,11 @@
 title = "Retrouver l’exécutable associé à une extension de fichier sous Windows"
 date = 2025-02-12
 draft = false
-summary = "Apprenez à identifier rapidement le programme associé à une extension de fichier sous Windows à l’aide des commandes `assoc` et `ftype`."
 +++
 
-Il arrive souvent, surtout lors de l’installation d’outils ou de runtimes, qu’on veuille savoir **quel programme est associé à une extension de fichier** sous Windows — par exemple, quel exécutable ouvre les fichiers `.jnlp`.
+Il arrive qu’on veuille savoir **quel programme est associé à une extension de fichier** sous Windows — par exemple, quel exécutable ouvre les fichiers `.jnlp`. Windows fournit deux commandes pratiques pour cela : `assoc` et `ftype`.
 
-Windows fournit deux commandes pratiques pour cela : `assoc` et `ftype` :
+<!--more-->
 
 `assoc` affiche l’association entre une **extension** et un **type de fichier** (FileType).
 ```cmd

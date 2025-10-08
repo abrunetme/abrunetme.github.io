@@ -4,6 +4,7 @@
             <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
             <time>{{ .Date.Format "2 Jan 2006" }}</time>
             <p>{{ .Summary }}</p>
+            <p><a href="{{ .RelPermalink }}">Lire la suite →</a></p>
         </article>
     {{ end }}
 {{ end }}
