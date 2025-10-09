@@ -1,0 +1,18 @@
+{{ define "main" }}
+  <h1>{{ partial "acronyms.html" .Title }}</h1>
+
+  {{ if .Data.Terms }}
+    <ul>
+      {{ range sort .Data.Terms.Alphabetical ".Page.Title" }}
+        <li>
+          <a href="{{ .Page.RelPermalink }}">
+            {{ .Page.Title }}
+          </a>
+          <small>({{ .Count }})</small>
+        </li>
+      {{ end }}
+    </ul>
+  {{ else }}
+    <p>Aucun terme trouvé.</p>
+  {{ end }}
+{{ end }}
