@@ -1,6 +1,9 @@
 {{ define "main" }}
     <article>
-        <h1>{{ .Title }}</h1>
-        <div>{{ .Content }}</div>
+        <header>
+            <h1>{{ .Title }}</h1>
+            {{ partial "post-meta.html" . }}
+        </header>
+        <main>{{ .Content }}</main>
     </article>
 {{ end }}

@@ -25,13 +25,15 @@ article > :last-child {
   margin-bottom: 0;
 }
 
-p {
+p, h1, h2 {
     --pico-typography-spacing-vertical: .5rem;
 }
 
 small {
   color: var(--pico-muted-color, #666);
   font-size: .75em;
+  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
 }
 
 pre > code {

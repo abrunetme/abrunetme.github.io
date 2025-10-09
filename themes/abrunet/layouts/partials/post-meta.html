@@ -1,10 +1,11 @@
-{{ if .Date }}
 <p>
   <small>
     Publié le {{ .Date.Format "2 Jan 2006" }}
+
+    {{ $separator := false }}
     {{ if and .Lastmod (ne (.Lastmod.Format "2006-01-02") (.Date.Format "2006-01-02")) }}
-      &nbsp;·&nbsp;🔄 Mis à jour le {{ .Lastmod.Format "2 Jan 2006" }}
+        {{ $separator = true }}
+        &nbsp;·&nbsp;Mis à jour le {{ .Lastmod.Format "2 Jan 2006" }}
     {{ end }}
   </small>
 </p>
-{{ end }}
