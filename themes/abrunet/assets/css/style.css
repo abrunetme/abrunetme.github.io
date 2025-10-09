@@ -12,6 +12,9 @@ body > main {
 }
 
 body > footer > p {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
     margin-bottom: inherit;
 }
 

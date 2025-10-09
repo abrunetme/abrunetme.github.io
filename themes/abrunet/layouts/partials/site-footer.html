@@ -1,9 +1,6 @@
 <footer>
     <p>
-        <a href="{{ "mentions-legales" | relURL }}" rel="license">
-            <img alt="Licence Creative Commons" style="border-width:0; vertical-align:middle;" 
-                 src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" />
-        </a>
+        <a href="{{ "mentions-legales" | relURL }}" rel="license"><img alt="Licence CC BY‑NC‑SA 4.0" src="{{ (resources.Get "images/cc-by-nc-sa-4.0.png").RelPermalink }}" /></a>
 
         {{ $lastUpdate := (index (sort .Site.RegularPages ".Lastmod" "desc") 0).Lastmod }}
         {{ with $lastUpdate }}

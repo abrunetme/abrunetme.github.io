@@ -10,13 +10,8 @@
     {{ partial "head-css.html" . }}
 </head>
 <body>
-    <header>
-        {{ if .IsHome }}
-        <h1 class="site-title"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
-        {{ else }}
-        <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
-        {{ end }}
-    </header>
+    {{ partial "site-header.html" . }}
+
     <main>
         {{ block "main" . }}{{ end }}
     </main>
