@@ -12,9 +12,27 @@ body > footer > p {
     margin-bottom: inherit;
 }
 
+article > header {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+p {
+    --pico-typography-spacing-vertical: .5rem;
+}
+
+article > p:last-child {
+  margin-bottom: 0;
+}
+
 .site-title {
     font-size: inherit;
     font-weight: inherit;
     letter-spacing: inherit;
     margin-bottom: initial;
+}
+
+small {
+  color: var(--pico-muted-color, #666);
 }
