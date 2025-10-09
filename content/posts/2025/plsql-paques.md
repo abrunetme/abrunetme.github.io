@@ -1,5 +1,6 @@
 +++
 title = "Calculer la date de Pâques en PL/SQL"
+description = "Codes PL/SQL pour calculer la date du dimache de Pâques et des autres jours fériés associés"
 date = 2025-10-07
 draft = false
 tags =  ["oracle", "plsql", "pâques", "ascension", "pentecôte"]

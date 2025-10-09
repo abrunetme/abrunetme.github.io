@@ -1,5 +1,6 @@
 +++
 title = "Ajouter \"Ouvrir dans VS Code\" au menu contextuel de Nemo"
+description = "Enrichir le menu contextuel de l'explorateur de fichier Nemo pour ouvrir un dossier directement dans VSCode"
 date = 2025-01-07
 draft = false
 tags =  ["linux", "mint", "nemo", "vscode"]

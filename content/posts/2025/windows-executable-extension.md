@@ -1,5 +1,6 @@
 +++
 title = "Retrouver l’exécutable associé à une extension de fichier sous Windows"
+description = "Utilisation des commandes 'assoc' et 'ftype' pour trouver l'exécutable associé à une extension"
 date = 2025-02-12
 draft = false
 tags = ["windows", "extension", "assoc", "ftype", "cmd", "jnlp"]

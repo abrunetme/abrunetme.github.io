@@ -1,5 +1,6 @@
 +++
 title = "Mentions légales"
+description = "Mentions légales du site abrunet.me"
 url = "/mentions-legales/"
 type = "page"
 date = 2025-10-08

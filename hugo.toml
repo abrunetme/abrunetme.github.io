@@ -15,3 +15,5 @@ lastmod = ["lastmod", ":git", "date"]
 
 [params]
 googleSiteVerification = "Lt8npI-FG_PXE2eiMYUpYhjbWiEsYioooVIP7_UozgQ"
+author = "Arnaud Brunet"
+description = "Blog personnel d'Arnaud Brunet"
