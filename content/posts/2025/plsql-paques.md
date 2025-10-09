@@ -2,7 +2,7 @@
 title = "Calculer la date de Pâques en PL/SQL"
 date = 2025-10-07
 draft = false
-tags =  ["oracle", "plsql", "paques", "ascension", "pentecote"]
+tags =  ["oracle", "plsql", "pâques", "ascension", "pentecôte"]
 +++
 
 Le calcul de la date de Pâques permet de déterminer le **dimanche de Pâques** ainsi que les jours fériés associés comme le **lundi de Pâques**, l’**Ascension** et la **Pentecôte**. Il peut donc être utile de les calculer directement depuis une base de données Oracle.
