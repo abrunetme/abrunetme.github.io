@@ -7,5 +7,16 @@
         {{ $separator = true }}
         &nbsp;·&nbsp;Mis à jour le {{ .Lastmod.Format "2 Jan 2006" }}
     {{ end }}
+
+    {{ with .Params.tags }}
+      {{ $tags := first 5 . }}
+      {{ if gt (len $tags) 0 }}
+        &nbsp;·&nbsp;
+        {{ range $i, $tag := $tags }}
+          {{ if $i }}, {{ end }}
+          <a href="{{ "/tags/" | relLangURL }}{{ $tag | urlize }}/">#{{ $tag }}</a>
+        {{ end }}
+      {{ end }}
+    {{ end }}
   </small>
 </p>

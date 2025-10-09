@@ -2,6 +2,7 @@
 title = "Retrouver l’exécutable associé à une extension de fichier sous Windows"
 date = 2025-02-12
 draft = false
+tags = ["windows", "extension", "assoc", "ftype", "cmd", "jnlp"]
 +++
 
 Il arrive qu’on veuille savoir **quel programme est associé à une extension de fichier** sous Windows — par exemple, quel exécutable ouvre les fichiers `.jnlp`. Windows fournit deux commandes pratiques pour cela : `assoc` et `ftype`.

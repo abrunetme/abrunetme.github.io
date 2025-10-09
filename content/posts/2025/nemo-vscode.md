@@ -2,6 +2,7 @@
 title = "Ajouter \"Ouvrir dans VS Code\" au menu contextuel de Nemo"
 date = 2025-01-07
 draft = false
+tags =  ["linux", "mint", "nemo", "vscode"]
 +++
 
 Si vous utilisez Visual Studio Code et le gestionnaire de fichiers Nemo (par défaut sur Linux Mint Cinnamon), il peut être très pratique d’ouvrir directement un dossier dans VS Code depuis le clic droit.
