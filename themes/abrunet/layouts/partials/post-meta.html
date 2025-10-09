@@ -14,7 +14,7 @@
         &nbsp;·&nbsp;
         {{ range $i, $tag := $tags }}
           {{ if $i }}, {{ end }}
-          <a href="{{ "/tags/" | relLangURL }}{{ $tag | urlize }}/">#{{ $tag }}</a>
+          <a href="{{ "/tags/" | relLangURL }}{{ $tag | urlize }}.html">#{{ $tag }}</a>
         {{ end }}
       {{ end }}
     {{ end }}

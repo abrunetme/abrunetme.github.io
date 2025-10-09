@@ -3,6 +3,7 @@ languageCode = 'fr'
 title = 'abrunet.me'
 theme = 'abrunet'
 enableGitInfo = true
+uglyURLs = true
 
 [markup]
   [markup.highlight]
@@ -17,3 +18,8 @@ lastmod = ["lastmod", ":git", "date"]
 googleSiteVerification = "Lt8npI-FG_PXE2eiMYUpYhjbWiEsYioooVIP7_UozgQ"
 author = "Arnaud Brunet"
 description = "Blog personnel d'Arnaud Brunet"
+
+[permalinks]
+  posts = "/posts/:contentbasename"
+  tags = "/tags/:slug"
+  pages = "/:contentbasename"
