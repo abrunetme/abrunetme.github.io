@@ -12,3 +12,6 @@ enableGitInfo = true
 
 [frontmatter]
 lastmod = ["lastmod", ":git", "date"]
+
+[params]
+googleSiteVerification = "Lt8npI-FG_PXE2eiMYUpYhjbWiEsYioooVIP7_UozgQ"

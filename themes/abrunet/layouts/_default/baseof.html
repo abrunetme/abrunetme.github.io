@@ -3,6 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{ with .Site.Params.googleSiteVerification }}
+    <meta name="google-site-verification" content="{{ . }}" />
+    {{ end }}
     <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
     {{ partial "head-css.html" . }}
 </head>
