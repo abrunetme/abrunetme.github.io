@@ -2,6 +2,9 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    max-width: 100ch;
+    margin-inline: auto;
+    padding-inline: 1rem;
 }
 
 body > main {
@@ -18,12 +21,22 @@ article > header {
     padding-bottom: 0;
 }
 
+article > :last-child {
+  margin-bottom: 0;
+}
+
 p {
     --pico-typography-spacing-vertical: .5rem;
 }
 
-article > p:last-child {
-  margin-bottom: 0;
+small {
+  color: var(--pico-muted-color, #666);
+  font-size: .75em;
+}
+
+pre > code {
+    padding-right: 0;
+    padding-left: 0;
 }
 
 .site-title {
@@ -33,6 +46,3 @@ article > p:last-child {
     margin-bottom: initial;
 }
 
-small {
-  color: var(--pico-muted-color, #666);
-}
