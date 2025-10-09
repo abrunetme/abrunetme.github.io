@@ -15,7 +15,7 @@ Site personnel hébergé sur [GitHub Pages](https://pages.github.com/)
 **Technologies utilisées**  
 - [Hugo](https://gohugo.io/) pour la génération du site statique  
 - [PicoCSS](https://picocss.com/) pour le style CSS 
-- [peaceiris/actions-hugo](https://github.com/peaceiris/actions-hugo) pour le déploiement automatique
+- [GitHub Actions for Hugo](https://github.com/marketplace/actions/hugo-setup) pour le déploiement automatique
 
 **Données personnelles**  
 Aucune donnée personnelle n'est collectée par ce site.  
