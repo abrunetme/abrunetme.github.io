@@ -8,7 +8,7 @@ enableGitInfo = true
   [markup.highlight]
     noClasses = true
     style = "friendly"
-    lineNos = true
+    lineNos = false
 
 [frontmatter]
 lastmod = ["lastmod", ":git", "date"]

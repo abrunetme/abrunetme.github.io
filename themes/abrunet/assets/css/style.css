@@ -36,15 +36,11 @@ small {
   margin-bottom: 0.75rem;
 }
 
-pre > code {
-    padding-right: 0;
-    padding-left: 0;
-}
-
 .site-title {
     font-size: inherit;
     font-weight: inherit;
     letter-spacing: inherit;
     margin-bottom: initial;
 }
+
 
