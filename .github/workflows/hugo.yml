@@ -28,7 +28,7 @@ jobs:
           extended: true
 
       - name: Build site
-        run: hugo --minify
+        run: hugo --minify --baseURL "https://abrunet.me/"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

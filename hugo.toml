@@ -25,8 +25,11 @@ posts = "/posts/:contentbasename"
 tags = "/tags/:slug"
 pages = "/:contentbasename"
 
+[taxonomies]
+tag = "tags"
+
 [outputs]
-home = ["HTML", "RSS", "SITEMAP"]
+home = ["HTML", "RSS", "SITEMAP", "ROBOTS"]
 section = []
 taxonomy = []
 term = ["HTML"]
@@ -38,6 +41,8 @@ baseName = "rss"
 isPlainText = true
 notAlternative = false
 
-[taxonomies]
-tag = "tags"
+[outputFormats.ROBOTS]
+baseName = "robots"
+mediaType = "text/plain"
+isPlainText = true
 
