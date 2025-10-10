@@ -4,6 +4,7 @@ title = 'abrunet.me'
 theme = 'abrunet'
 enableGitInfo = true
 uglyURLs = true
+copyright = 'CC BY‑NC‑SA 4.0'
 
 [markup]
   [markup.highlight]
@@ -30,6 +31,12 @@ section = []
 taxonomy = []
 term = ["HTML"]
 page = ["HTML"]
+
+[outputFormats.RSS]
+mediatype = "application/rss+xml"
+baseName = "rss"
+isPlainText = true
+notAlternative = false
 
 [taxonomies]
 tag = "tags"
