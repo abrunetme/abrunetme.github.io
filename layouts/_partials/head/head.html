@@ -25,14 +25,14 @@
         <meta name="google-site-verification" content="{{ . }}" />
     {{ end }}
 
-    {{ partial "head-open-graph.html" (dict "Page" . "Desc" $desc) }}
-    {{ partial "head-twitter.html" (dict "Page" . "Desc" $desc) }}
+    {{ partial "head/open-graph.html" (dict "Page" . "Desc" $desc) }}
+    {{ partial "head/twitter.html" (dict "Page" . "Desc" $desc) }}
 
     {{ with .OutputFormats.Get "rss" }}
         {{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
     {{ end }}
     
-    {{ partial "head-css.html" . }}
+    {{ partial "head/css.html" . }}
 
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ printf "%s | %s" .Title .Site.Title }}{{ end }}</title>
 

@@ -1,0 +1,7 @@
+{{ define "main" }}
+  <h1>Articles avec le tag '{{ .Title | lower }}'</h1>
+
+  {{ range (sort (where .Pages "Type" "!=" "") "Title") }}
+    {{ partial "post/summary.html" . }}
+  {{ end }}
+{{ end }}

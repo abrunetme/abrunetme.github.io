@@ -1,0 +1,15 @@
+<footer>
+    <p>
+        {{ $separator := false }}
+        {{ with .Site.Params.Licence }}
+        {{ $separator = true }}
+        <a href="/mentions-legales.html" rel="license">{{ . }}</a>
+        {{ end }}
+
+        {{ $lastUpdate := (index (sort .Site.RegularPages ".Lastmod" "desc") 0).Lastmod | default (index (sort .Site.RegularPages "Date" "desc") 0).Date }}
+        {{ with $lastUpdate }}
+            {{ if $separator }}&nbsp;·&nbsp;{{ end }}
+            Dernière mise à jour : {{ .Format "2 Jan 2006" }}
+        {{ end }}
+    </p>
+</footer>

@@ -18,10 +18,19 @@ body > footer > p {
     margin-bottom: inherit;
 }
 
-article > header {
+article > header,
+body > header {
     border-bottom: none;
     margin-bottom: 0;
     padding-bottom: 0;
+}
+
+article > header p,
+body > footer p {
+    color: var(--pico-muted-color, #666);
+    font-size: .75em;
+    margin-top: 0.25rem;
+    margin-bottom: 0.75rem;
 }
 
 article > :last-child {
@@ -30,13 +39,6 @@ article > :last-child {
 
 p, h1, h2 {
     --pico-typography-spacing-vertical: .5rem;
-}
-
-small {
-  color: var(--pico-muted-color, #666);
-  font-size: .75em;
-  margin-top: 0.25rem;
-  margin-bottom: 0.75rem;
 }
 
 .site-title {

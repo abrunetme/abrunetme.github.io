@@ -1,10 +1,18 @@
-baseURL = '/'
-languageCode = 'fr'
 title = 'abrunet.me'
-theme = 'abrunet'
 enableGitInfo = true
 uglyURLs = true
-copyright = 'CC BY‑NC‑SA 4.0'
+languageCode = "fr"
+defaultContentLanguage = "fr"
+baseURL = '/'
+
+[params]
+googleSiteVerification = "Lt8npI-FG_PXE2eiMYUpYhjbWiEsYioooVIP7_UozgQ"
+author = "Arnaud Brunet"
+description = "Blog personnel d'Arnaud Brunet"
+licence = "CC BY‑NC‑SA 4.0"
+
+[frontmatter]
+lastmod = ["lastmod", ":git", "date"]
 
 [markup]
   [markup.highlight]
@@ -12,18 +20,10 @@ copyright = 'CC BY‑NC‑SA 4.0'
     style = "friendly"
     lineNos = false
 
-[frontmatter]
-lastmod = ["lastmod", ":git", "date"]
-
-[params]
-googleSiteVerification = "Lt8npI-FG_PXE2eiMYUpYhjbWiEsYioooVIP7_UozgQ"
-author = "Arnaud Brunet"
-description = "Blog personnel d'Arnaud Brunet"
-
 [permalinks]
-  posts = "/posts/:contentbasename"
-  tags = "/tags/:slug"
-  pages = "/:contentbasename"
+posts = "/posts/:contentbasename"
+tags = "/tags/:slug"
+pages = "/:contentbasename"
 
 [outputs]
 home = ["HTML", "RSS", "SITEMAP"]
@@ -40,3 +40,4 @@ notAlternative = false
 
 [taxonomies]
 tag = "tags"
+

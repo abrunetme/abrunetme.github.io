@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
+{{ partial "head/head.html" . }}
+
+<body>
+    <header>
+        <h1 class="site-title"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
+    </header>
+
+    <main>
+        {{ block "main" . }}{{ end }}
+    </main>
+
+    {{ partial "site/footer.html" . }}
+</body>
+</html>
