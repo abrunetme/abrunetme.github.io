@@ -23,3 +23,13 @@ description = "Blog personnel d'Arnaud Brunet"
   posts = "/posts/:contentbasename"
   tags = "/tags/:slug"
   pages = "/:contentbasename"
+
+[outputs]
+home = ["HTML", "RSS", "SITEMAP"]
+section = []
+taxonomy = []
+term = ["HTML"]
+page = ["HTML"]
+
+[taxonomies]
+tag = "tags"
