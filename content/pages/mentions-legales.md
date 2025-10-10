@@ -25,6 +25,6 @@ Aucun cookie n’est utilisé sur ce site.
 
 **Propriété intellectuelle et licence**  
 Tout le contenu de ce site est sous licence **Creative Commons Attribution‑NonCommercial‑ShareAlike 4.0 International (CC BY‑NC‑SA 4.0)**, sauf mention contraire.  
-Vous pouvez partager et réutiliser le contenu à des fins **non commerciales**, et adapter ou transformer le contenu, **à condition de mentionner l’auteur : Arnaud Brunet, ainsi que le site https://tabrunet.me**, et de publier toute œuvre dérivée **sous la même licence**.
+Vous pouvez partager et réutiliser le contenu à des fins **non commerciales**, et adapter ou transformer le contenu, **à condition de mentionner l’auteur : Arnaud Brunet, ainsi que le site https://abrunet.me**, et de publier toute œuvre dérivée **sous la même licence**.
 
 [En savoir plus sur CC BY‑NC‑SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
