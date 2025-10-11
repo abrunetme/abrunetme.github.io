@@ -1,5 +1,5 @@
 {{ define "main" }}
-  {{ range (sort (where .Site.RegularPages "Type" "eq" "posts") "Lastmod" "desc") }}
+  {{ range (sort (where .Site.RegularPages "Type" "posts") "Lastmod" "desc") }}
     {{ partial "post/summary.html" . }}
   {{ end }}
 {{ end }}

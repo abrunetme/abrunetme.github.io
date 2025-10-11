@@ -4,9 +4,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>{{ .Site.Title }}</title>
-    <link>{{ site.BaseURL }}</link>
+    <link>{{ .Site.BaseURL }}</link>
     <description>Contenu récent de {{ .Site.Title }}</description>
-    <language>{{ site.Language.LanguageCode }}</language>
+    <language>{{ .Site.Language.LanguageCode }}</language>
 
     {{ with .Site.Params.Licence }}
     <copyright>{{ . }}</copyright>
@@ -20,7 +20,7 @@
     <atom:link href="{{ .Permalink }}" rel="self" type="application/rss+xml" />
     {{ end }}
 
-    {{- range (sort (where .Site.RegularPages "Type" "ne" "pages") "Lastmod" "desc") }}
+    {{- range (sort (where .Site.RegularPages "Type" "posts") "Lastmod" "desc") }}
     <item>
       <guid isPermaLink="true">{{ .Permalink }}</guid>
       <title>{{ .Title }}</title>
@@ -31,8 +31,10 @@
       <lastBuildDate>{{ .Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</lastBuildDate>
       {{ end }}
 
-      {{ with site.Params.author }}
-      <author>noreply@abrunet.me ({{ . }})</author>
+      {{ $authorId := default .Site.Params.publisher .Params.author }}
+      {{ with $authorId }}
+        {{ $author := index site.Data.authors . }}
+        <author>{{ $author.email }} ({{ $author.name }})</author>
       {{ end }}
 
       <description>{{ .Summary | transform.XMLEscape | safeHTML }}</description>

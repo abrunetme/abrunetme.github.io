@@ -1,15 +1,8 @@
 [abrunet]
 id = "abrunet"
 name = "Arnaud Brunet"
+email = "noreply@abrunet.me"
 description = "Développeur et auteur du blog abrunet.me, dédié au développement et à la tech."
 website = "http://abrunet.me"
 github = "https://github.com/abrunetme"
 linkedin = "https://www.linkedin.com/in/abrunetme"
-
-[janedoe]
-id = "janedoe"
-name = "Jane Doe"
-description = "Auteur invitée sur le blog, spécialisée en data science."
-website = "http://jonedoe.com"
-linkedin = "https://www.linkedin.com/in/janedoe"
-facebook = "https://facebook.com/jonedoe"
