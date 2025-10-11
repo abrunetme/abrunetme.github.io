@@ -29,7 +29,6 @@
     "@id": {{ $publisherUrl }}, 
     "name": {{ $publisher.name }}, 
     "url": {{ $publisherUrl }},
-    "email": {{ $publisher.email }},
     "sameAs": {{ $publisherSameAs }} 
   } 
 }
@@ -49,7 +48,6 @@
     "@id": {{ $authorUrl }},
     "name": {{ $author.name }},
     "url": {{ $authorUrl }},
-    "email": {{ $author.email }},
     "sameAs": {{ $authorSameAs }}
   },
   "datePublished": "{{ .PublishDate.Format "2006-01-02T15:04:05Z" }}",
@@ -74,7 +72,6 @@
     "@id": {{ $authorUrl }},
     "name": {{ $author.name }},
     "url": {{ $authorUrl }},
-    "email": {{ $author.email }},
     "sameAs": {{ $authorSameAs }}
   },
   "datePublished": "{{ .PublishDate.Format "2006-01-02T15:04:05Z" }}",

@@ -1,7 +1,10 @@
 {{ $lastUpdate := (index (sort .Site.RegularPages ".Lastmod" "desc") 0).Lastmod }}
 
 {{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" 
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+
   <channel>
     <title>{{ .Site.Title }}</title>
     <link>{{ .Site.BaseURL }}</link>
@@ -31,10 +34,10 @@
       <lastBuildDate>{{ .Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</lastBuildDate>
       {{ end }}
 
-      {{ $authorId := default .Site.Params.publisher .Params.author }}
-      {{ with $authorId }}
-        {{ $author := index site.Data.authors . }}
-        <author>{{ $author.email }} ({{ $author.name }})</author>
+      {{ $authorId := .Params.author | default .Site.Params.publisher }}
+      {{ $author := index site.Data.authors $authorId }}
+      {{ if $author }}
+      <dc:creator>{{ $author.name }}</dc:creator>
       {{ end }}
 
       <description>{{ .Summary | transform.XMLEscape | safeHTML }}</description>
