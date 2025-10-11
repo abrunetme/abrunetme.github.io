@@ -1,4 +1,4 @@
-title = 'abrunet'
+title = "abrunet"
 enableGitInfo = true
 uglyURLs = true
 languageCode = "fr"
@@ -6,13 +6,16 @@ defaultContentLanguage = "fr"
 baseURL = '/'
 
 [params]
-googleSiteVerification = "Lt8npI-FG_PXE2eiMYUpYhjbWiEsYioooVIP7_UozgQ"
-author = "Arnaud Brunet"
 description = "Blog personnel d'Arnaud Brunet"
+googleSiteVerification = "Lt8npI-FG_PXE2eiMYUpYhjbWiEsYioooVIP7_UozgQ"
 licence = "CC BY‑NC‑SA 4.0"
+publisher = "abrunet"
 
 [frontmatter]
 lastmod = ["lastmod", ":git", "date"]
+
+[taxonomies]
+tag = "tags"
 
 [markup]
   [markup.highlight]
@@ -20,18 +23,10 @@ lastmod = ["lastmod", ":git", "date"]
     style = "friendly"
     lineNos = false
 
-[permalinks]
-posts = "/posts/:contentbasename"
-tags = "/tags/:slug"
-pages = "/:contentbasename"
-
-[taxonomies]
-tag = "tags"
-
 [outputs]
 home = ["HTML", "RSS", "SITEMAP", "ROBOTS"]
-section = []
-taxonomy = []
+section = ["HTML"]
+taxonomy = ["HTML"]
 term = ["HTML"]
 page = ["HTML"]
 

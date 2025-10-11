@@ -3,7 +3,7 @@
         {{ $separator := false }}
         {{ with .Site.Params.Licence }}
         {{ $separator = true }}
-        <a href="/mentions-legales.html" rel="license">{{ . }}</a>
+        <a href="/pages/mentions-legales.html" rel="license">{{ . }}</a>
         {{ end }}
 
         {{ $lastUpdate := (index (sort .Site.RegularPages ".Lastmod" "desc") 0).Lastmod | default (index (sort .Site.RegularPages "Date" "desc") 0).Date }}

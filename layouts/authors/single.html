@@ -1,0 +1,18 @@
+{{ define "main" }}
+<article>
+    <header>
+        <h1>{{ .Title }}</h1>
+    </header>
+
+    {{ with index site.Data.authors .Params.id }}
+    <p>{{ .description }}</p>
+
+    <ul class="social-links">
+        {{ with .website }}<li><a href="{{ . }}">Website</a></li>{{ end }}
+        {{ with .github }}<li><a href="{{ . }}">GitHub</a></li>{{ end }}
+        {{ with .linkedin }}<li><a href="{{ . }}">LinkedIn</a></li>{{ end }}
+        {{ with .facebook }}<li><a href="{{ . }}">Facebook</a></li>{{ end }}
+    </ul>
+    {{ end }}
+</article>
+{{end}}

@@ -1,0 +1,27 @@
+{{ $desc := .Params.description | default .Site.Params.description | truncate 160 }}
+{{ if eq .Kind "taxonomy" }}
+    {{ $desc = printf "Liste des tags disponibles sur %s." .Site.Title }}
+{{ else if eq .Kind "term" }}
+    {{ $desc = printf "Articles avec le tag '%s' sur %s." .Title .Site.Title }}
+{{ end }}
+
+{{ if $desc }}
+<meta name="description" content="{{ $desc }}">
+{{ end }}
+
+{{ with .Site.Params.author }}
+<meta name="author" content="{{ . }}">
+{{ end }}
+
+{{ with .Params.tags }}
+<meta name="keywords" content="{{ delimit (apply . "urlize" "." ) ", " }}">
+{{ end }}
+
+{{ with .Site.Params.googleSiteVerification }}
+<meta name="google-site-verification" content="{{ . }}" />
+{{ end }}
+
+{{ partial "head/open-graph.html" (dict "Page" . "Desc" $desc) }}
+{{ partial "head/twitter.html" (dict "Page" . "Desc" $desc) }}
+
+<meta name="robots" content="index, follow">

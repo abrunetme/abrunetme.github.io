@@ -1,3 +1,13 @@
+{{ if .IsHome }}
+<link rel="canonical" href="{{ .Site.BaseURL }}">
+{{ else }}
+<link rel="canonical" href="{{ .Permalink }}">
+{{ end }}
+
+{{ with .OutputFormats.Get "rss" }}
+{{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+{{ end }}
+
 {{ $pico   := resources.Get "css/pico.fluid.classless.min.css" }}
 {{ $custom  := resources.Get "css/style.css" }}
 {{ $styles := slice $pico $custom | resources.Concat "css/bundle.css" | minify | fingerprint }}

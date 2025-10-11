@@ -1,39 +1,9 @@
-{{ $desc := .Params.description | default .Site.Params.description | truncate 160 }}
-{{ if eq .Kind "taxonomy" }}
-    {{ $desc = printf "Liste des tags disponibles sur %s." .Site.Title }}
-{{ else if eq .Kind "term" }}
-    {{ $desc = printf "Articles avec le tag '%s' sur %s." .Title .Site.Title }}
-{{ end }}
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    {{ if $desc }}
-        <meta name="description" content="{{ $desc }}">
-    {{ end }}
-    
-    {{ with .Site.Params.author }}
-        <meta name="author" content="{{ . }}">
-    {{ end }}
-    
-    {{ with .Params.tags }}
-        <meta name="keywords" content="{{ delimit (apply . "urlize" "." ) ", " }}">
-    {{ end }}
-    
-    {{ with .Site.Params.googleSiteVerification }}
-        <meta name="google-site-verification" content="{{ . }}" />
-    {{ end }}
-
-    {{ partial "head/open-graph.html" (dict "Page" . "Desc" $desc) }}
-    {{ partial "head/twitter.html" (dict "Page" . "Desc" $desc) }}
-
-    {{ with .OutputFormats.Get "rss" }}
-        {{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
-    {{ end }}
-    
-    {{ partial "head/css.html" . }}
-
-    <link rel="canonical" href="{{ .Permalink }}">
+    {{ partial "head/meta.html" . }}
+    {{ partial "head/links.html" . }}
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ printf "%s | %s" .Title .Site.Title }}{{ end }}</title>
+
+    {{ partial "head/jsonld.html" . }}
 </head>
