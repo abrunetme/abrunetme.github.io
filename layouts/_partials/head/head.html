@@ -34,6 +34,6 @@
     
     {{ partial "head/css.html" . }}
 
+    <link rel="canonical" href="{{ .Permalink }}">
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ printf "%s | %s" .Title .Site.Title }}{{ end }}</title>
-
 </head>
