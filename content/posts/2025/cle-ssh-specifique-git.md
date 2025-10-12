@@ -14,7 +14,7 @@ C’est par exemple le cas quand un dépôt est associé à une autre identité 
 ## Le problème
 
 Par défaut, Git utilise la première clé SSH disponible (souvent ~/.ssh/id_rsa).
-Si cette clé correspond à un autre compte GitHub, la commande git push échouera avec un message du type :
+Si cette clé correspond à un autre compte GitHub, la commande `git push` échouera avec un message du type :
 
 ```text
 ERROR: Permission to user/repo.git denied to other-user.
@@ -26,14 +26,14 @@ et que le dépôt existe.
 
 ## Solution
 
-Vous pouvez forcer Git à utiliser une clé SSH précise en définissant la variable d’environnement GIT_SSH_COMMAND :
+Vous pouvez forcer Git à utiliser une clé SSH précise en définissant la variable d’environnement `GIT_SSH_COMMAND` :
 
 ```sh
 GIT_SSH_COMMAND="ssh -i ~/.ssh/autre-cle -o IdentitiesOnly=yes" git push
 ```
 
 Explication :
-* -i ~/.ssh/autre-cle → indique la clé privée à utiliser
-* -o IdentitiesOnly=yes → empêche SSH d’essayer d’autres clés ou agents
-* GIT_SSH_COMMAND="..." → fait en sorte que Git appelle SSH avec ces options
+* `-i ~/.ssh/autre-cle` → indique la clé privée à utiliser
+* `-o IdentitiesOnly=yes` → empêche SSH d’essayer d’autres clés ou agents
+* `GIT_SSH_COMMAND="..."` → fait en sorte que Git appelle SSH avec ces options
 
