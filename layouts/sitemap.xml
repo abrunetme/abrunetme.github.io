@@ -2,6 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
+  <url>
+    <loc>{{ .Site.BaseURL }}</loc>
+    {{ $lastUpdate := (index (sort .Site.RegularPages ".Lastmod" "desc") 0).Lastmod | default (index (sort .Site.RegularPages "Date" "desc") 0).Date }}
+    {{ with $lastUpdate }}
+    <lastmod>{{ .Format "2006-01-02T15:04:05-07:00" }}</lastmod>
+    {{ end }}
+  </url>
+  
   {{- range .Site.Pages -}}
     <url>
       <loc>{{ .Permalink }}</loc>
