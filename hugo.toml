@@ -10,7 +10,6 @@ description = "Blog personnel d'Arnaud Brunet"
 licence = "CC BY‑NC‑SA 4.0"
 publisher = "abrunet"
 googleSiteVerification = "Lt8npI-FG_PXE2eiMYUpYhjbWiEsYioooVIP7_UozgQ"
-indexnowKey = "d3239a663de041c8a9f3d6f188ee7323"
 
 [frontmatter]
 lastmod = ["lastmod", ":git", "date"]
@@ -25,7 +24,7 @@ tag = "tags"
     lineNos = false
 
 [outputs]
-home = ["HTML", "RSS", "SITEMAP", "ROBOTS", "IndexNowKey"]
+home = ["HTML", "RSS", "SITEMAP", "ROBOTS"]
 section = ["HTML"]
 taxonomy = ["HTML"]
 term = ["HTML"]
@@ -41,9 +40,3 @@ notAlternative = false
 baseName = "robots"
 mediaType = "text/plain"
 isPlainText = true
-
-[outputFormats.IndexNowKey]
-mediaType = "text/plain"
-baseName = "indexnow"
-isPlainText = true
-notAlternative = true

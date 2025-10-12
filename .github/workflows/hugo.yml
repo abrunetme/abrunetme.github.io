@@ -34,9 +34,7 @@ jobs:
         run: |
           DOMAIN=$(cat CNAME | tr -d '[:space:]')
           hugo --minify --baseURL "https://$DOMAIN/"
-
-          KEY=$(cat public/indexnow.txt | tr -d '[:space:]')
-          mv "public/indexnow.txt" "public/$KEY.txt"
+          
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
