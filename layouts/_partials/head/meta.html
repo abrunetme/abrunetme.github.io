@@ -9,9 +9,9 @@
 <meta name="description" content="{{ $desc }}">
 {{ end }}
 
-{{ with .Site.Params.author }}
-<meta name="author" content="{{ . }}">
-{{ end }}
+{{ $authorId := default .Site.Params.publisher .Params.author }}
+{{ $author := index site.Data.authors $authorId }}
+<meta name="author" content="{{ $author.name }}">
 
 {{ with .Params.tags }}
 <meta name="keywords" content="{{ delimit (apply . "urlize" "." ) ", " }}">
