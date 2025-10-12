@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{ partial "head/meta.html" . }}
     {{ partial "head/links.html" . }}
-    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ printf "%s | %s" .Title .Site.Title }}{{ end }}</title>
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}</title>
 
     {{ partial "head/jsonld.html" . }}
 </head>
