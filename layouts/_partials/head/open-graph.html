@@ -3,10 +3,10 @@
 
 <meta property="og:site_name" content="{{ $page.Site.Title }}">
 <meta property="og:title" content="{{ $page.Title }}">
-<meta property="og:url" content="{{ $page.Permalink }}">
+<meta property="og:url" content="{{ if $page.IsHome }}{{ $page.Site.BaseURL }}{{ else }}{{ $page.Permalink }}{{ end }}">
 
 {{ if $desc }}
-    <meta property="og:description" content="{{ $desc }}">
+<meta property="og:description" content="{{ $desc }}">
 {{ end }}
 
 <meta property="og:type" content="article">
