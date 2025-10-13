@@ -9,10 +9,11 @@
   {{- $pageTitle = printf "Articles avec le tag '%s'." (.Title | lower) -}}
   {{- $pageDesc = printf "Articles avec le tag '%s'." (.Title | lower) -}}
 {{ end }}
+
 {{- $ldType := default "WebPage" .Params.ldType -}}
 {{- if and (eq .Type "posts") (eq .Kind "page") -}}
   {{- $ldType = "BlogPosting" -}}
-{{- else if (eq .Kind "term") -}}
+{{- else if or (eq .Kind "term") (eq .Kind "section") (eq .Kind "taxonomy") -}}
   {{- $ldType = "CollectionPage" -}}
 {{- end -}}
 
