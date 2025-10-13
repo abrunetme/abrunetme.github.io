@@ -3,7 +3,7 @@
 {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": "{{ .Site.BaseURL }}#site",
+    "@id": {{ (print .Site.BaseURL "#site") }},
     "name": {{ .Site.Title }},
     "url": {{ .Site.BaseURL }},
     "inLanguage": {{ .Site.LanguageCode }},
