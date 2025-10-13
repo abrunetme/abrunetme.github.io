@@ -6,6 +6,7 @@
   "@context": "https://schema.org",
   "@type": "ProfilePage",
   "@id": {{ (print .Permalink "#profile") }},
+  "name": {{ .name }},
   "headline": "{{ $vars.pageTitle }}",
   "description": {{ .description }},
   "inLanguage": {{ $vars.siteLangCode }},

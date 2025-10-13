@@ -10,6 +10,9 @@
 {{ if (eq .Kind "term") }}
   {{- $pageTitle = printf "Articles avec le tag '%s'." (.Title | lower) -}}
   {{- $pageDesc = printf "Articles avec le tag '%s'." (.Title | lower) -}}
+{{- else if and (eq .Type "authors") (eq .Kind "page") -}}
+  {{- $pageTitle = printf "Profil de %s" .Title -}}
+  {{- $pageDesc = printf "Profil de %s" .Title -}}
 {{ end }}
 
 {{- $ldType := default "WebPage" .Params.ldType -}}
