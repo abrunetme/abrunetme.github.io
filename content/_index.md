@@ -1,3 +1,0 @@
-+++
-ldType = "WebSite"
-+++

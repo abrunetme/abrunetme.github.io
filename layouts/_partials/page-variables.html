@@ -2,44 +2,53 @@
 {{- $siteDir  := default "ltr" .Site.Language.LanguageDirection -}}
 {{- $siteLastMod := (index (sort .Site.RegularPages ".Lastmod" "desc") 0).Lastmod | default (index (sort .Site.RegularPages "Date" "desc") 0).Date -}}
 
-{{- $publisher := index site.Data.authors .Site.Params.publisher -}}
-{{- $publisherSameAs := slice -}}
-{{- with $publisher.github -}}{{- $publisherSameAs = $publisherSameAs | append . -}}{{- end -}}
-{{- with $publisher.linkedin -}}{{- $publisherSameAs = $publisherSameAs | append . -}}{{- end -}}
-{{- with $publisher.facebook -}}{{- $publisherSameAs = $publisherSameAs | append . -}}{{- end -}}
-{{- with $publisher.website -}}{{- $publisherSameAs = $publisherSameAs | append . -}}{{- end -}}
-{{- $publisherUrl := printf "%sauthors/%s.html" .Site.BaseURL $publisher.id -}}
-
-{{- $authorId := default .Site.Params.publisher .Params.author -}}
-{{- $author := index site.Data.authors $authorId -}}
-{{- $authorSameAs := slice -}}
-{{- with $author.github -}}{{- $authorSameAs = $authorSameAs | append . -}}{{- end -}}
-{{- with $author.linkedin -}}{{- $authorSameAs = $authorSameAs | append . -}}{{- end -}}
-{{- with $author.facebook -}}{{- $authorSameAs = $authorSameAs | append . -}}{{- end -}}
-{{- with $author.website -}}{{- $authorSameAs = $authorSameAs | append . -}}{{- end -}}
-{{- $authorUrl := printf "%sauthors/%s.html" .Site.BaseURL $author.id -}}
-
 {{- $pageURL := cond .IsHome .Site.BaseURL .Permalink -}}
 {{- $pageTitle := default .Site.Title .Title -}}
 {{- $pageDesc := .Params.description | default .Site.Params.description | truncate 160 -}}
-{{- $ldType := default "WebPage" .Params.ldType -}}
-{{- $ogType := default "website" .Params.ogType -}}
-
-{{- if and (eq .Type "posts") (eq .Kind "page") -}}
-  {{- $ldType = "BlogPosting" -}}
-  {{- $ogType = "article" -}}
-{{- else if and (eq .Type "authors") (eq .Kind "page") -}}
-  {{- $ldType = "ProfilePage" -}}
-  {{- $ogType = "profile" -}}
-{{- else if (eq .Kind "term") -}}
+{{ if (eq .Kind "term") }}
   {{- $pageTitle = printf "Articles avec le tag '%s'." (.Title | lower) -}}
   {{- $pageDesc = printf "Articles avec le tag '%s'." (.Title | lower) -}}
+{{ end }}
+{{- $ldType := default "WebPage" .Params.ldType -}}
+{{- if and (eq .Type "posts") (eq .Kind "page") -}}
+  {{- $ldType = "BlogPosting" -}}
+{{- else if (eq .Kind "term") -}}
   {{- $ldType = "CollectionPage" -}}
 {{- end -}}
+
+{{ $authors := slice }}
+{{ range $id, $author := site.Data.authors }}
+    {{- $sameAs := slice -}}
+    {{- with $author.github -}}{{- $sameAs = $sameAs | append . -}}{{- end -}}
+    {{- with $author.linkedin -}}{{- $sameAs = $sameAs | append . -}}{{- end -}}
+    {{- with $author.facebook -}}{{- $sameAs = $sameAs | append . -}}{{- end -}}
+    {{- with $author.website -}}{{- $sameAs = $sameAs | append . -}}{{- end -}}
+
+    {{ $page := site.GetPage (printf "authors/%s.md" $id) }}
+    {{ $enriched := dict
+        "id"        $id
+        "name"      $author.name
+        "github"    $author.github
+        "linkedin"  $author.linkedin
+        "facebook"  $author.facebook
+        "website"   $author.website
+        "Date"      $page.Date
+        "Lastmod"   $page.Lastmod
+        "Permalink" $page.Permalink
+        "Title"     $page.Title
+        "sameAs"    $sameAs
+    }}
+    {{ $authors = merge $authors (dict $id $enriched)  }}
+{{ end }}
+
+{{- $publisher := index $authors .Site.Params.publisher -}}
+{{- $author := index $authors (default .Site.Params.publisher .Params.author) -}}
 
 {{- $items := slice -}}
 {{- if or .IsHome (eq .Kind "rss") -}}
   {{- $items = sort (where .Site.RegularPages "Type" "posts") "Lastmod" "desc" -}}
+{{- else if and (eq .Kind "taxonomy") (eq .Type "authors") }}
+  {{- $items = sort $authors "name" "asc" -}}
 {{- else -}}
   {{- $items = sort .Pages "Title" "asc" -}}
 {{- end -}}
@@ -50,19 +59,14 @@
     "siteLastMod"       $siteLastMod
 
     "publisher"         $publisher
-    "publisherSameAs"   $publisherSameAs
-    "publisherUrl"      $publisherUrl
-    
     "author"            $author
-    "authorSameAs"      $authorSameAs
-    "authorUrl"         $authorUrl
     
     "pageTitle"         $pageTitle
     "pageURL"           $pageURL
     "pageDesc"          $pageDesc
 
     "ldType"            $ldType
-    "ogType"            $ogType
 
     "items"             $items
+    "authors"           $authors
 }}

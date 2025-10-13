@@ -3,6 +3,10 @@
 <html lang="{{ $vars.siteLang }}" dir="{{ $vars.siteDir }}">
 {{- partial "head.html" . -}}
 <body>
+{{- if and .Site.Params.debug (eq hugo.Environment "development") -}}
+{{- partial "debug.html" . -}}
+{{ end }}
+
 {{- partial "site-header.html" . -}}
     <main>
         {{- block "content" . -}}{{- end -}}

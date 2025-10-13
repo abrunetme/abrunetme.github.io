@@ -1,0 +1,18 @@
+{{- $vars := partial "page-variables.html" . }}
+{{- with index $vars.authors .Params.id -}}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": "{{ $vars.pageURL }}",
+  "headline": "{{ $vars.pageTitle }}",
+  "description": {{ $vars.pageDesc }},
+  "inLanguage": {{ .Site.LanguageCode }},
+  "datePublished": {{ .Date.Format "2006-01-02T15:04:05Z" }},
+  "dateModified": {{ .Lastmod.Format "2006-01-02T15:04:05Z" }},
+  "publisher": {{- partial "head-jsonld-person-part.html" $vars.publisher -}},
+  "mainEntity": {{- partial "head-jsonld-person-part.html" . -}}
+}
+</script>
+{{- end -}}

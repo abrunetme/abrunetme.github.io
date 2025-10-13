@@ -1,0 +1,14 @@
+{{- $vars := partial "page-variables.html" . }}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": {{ .Site.BaseURL }},
+    "name": {{ .Site.Title }},
+    "url": {{ .Site.BaseURL }},
+    "inLanguage": {{ .Site.LanguageCode }},
+    "description": {{ .Site.Params.description }},
+    "dateModified": {{ $vars.siteLastMod.Format "2006-01-02T15:04:05Z" }},
+    "publisher": {{- partial "head-jsonld-person-part.html" $vars.publisher -}}
+}
+</script>
