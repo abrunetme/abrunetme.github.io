@@ -4,17 +4,6 @@
 {{- $siteDir  := default "ltr" .Site.Language.LanguageDirection -}}
 {{- $siteLastMod := (index (sort .Site.RegularPages ".Lastmod" "desc") 0).Lastmod | default (index (sort .Site.RegularPages "Date" "desc") 0).Date -}}
 
-{{- $pageURL := cond .IsHome .Site.BaseURL .Permalink -}}
-{{- $pageTitle := default .Site.Title .Title -}}
-{{- $pageDesc := .Params.description | default .Site.Params.description | truncate 160 -}}
-{{ if (eq .Kind "term") }}
-  {{- $pageTitle = printf "Articles avec le tag '%s'." (.Title | lower) -}}
-  {{- $pageDesc = printf "Articles avec le tag '%s'." (.Title | lower) -}}
-{{- else if and (eq .Type "authors") (eq .Kind "page") -}}
-  {{- $pageTitle = printf "Profil de %s" .Title -}}
-  {{- $pageDesc = printf "Profil de %s" .Title -}}
-{{ end }}
-
 {{- $ldType := default "WebPage" .Params.ldType -}}
 {{- if and (eq .Type "posts") (eq .Kind "page") -}}
   {{- $ldType = "BlogPosting" -}}
@@ -52,6 +41,17 @@
 
 {{- $publisher := index $authors .Site.Params.publisher -}}
 {{- $author := index $authors (default .Site.Params.publisher .Params.author) -}}
+
+{{- $pageURL := cond .IsHome .Site.BaseURL .Permalink -}}
+{{- $pageTitle := default .Site.Title .Title -}}
+{{- $pageDesc := .Params.description | default .Site.Params.description | truncate 160 -}}
+{{ if (eq .Kind "term") }}
+  {{- $pageTitle = printf "Articles avec le tag '%s'." (.Title | lower) -}}
+  {{- $pageDesc = printf "Articles avec le tag '%s'." (.Title | lower) -}}
+{{- else if and (eq .Type "authors") (eq .Kind "page") -}}
+  {{- $pageTitle = printf "Profil de %s" .Title -}}
+  {{- $pageDesc = $author.description -}}
+{{ end }}
 
 {{- $items := slice -}}
 {{- if or .IsHome (eq .Kind "rss") -}}
