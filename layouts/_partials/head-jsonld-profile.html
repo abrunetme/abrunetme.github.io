@@ -7,12 +7,15 @@
   "@type": "ProfilePage",
   "@id": "{{ $vars.pageURL }}",
   "headline": "{{ $vars.pageTitle }}",
-  "description": {{ $vars.pageDesc }},
-  "inLanguage": {{ .Site.LanguageCode }},
+  "description": {{ .description }},
+  "inLanguage": {{ $vars.siteLangCode }},
   "datePublished": {{ .Date.Format "2006-01-02T15:04:05Z" }},
   "dateModified": {{ .Lastmod.Format "2006-01-02T15:04:05Z" }},
   "publisher": {{- partial "head-jsonld-person-part.html" $vars.publisher -}},
-  "mainEntity": {{- partial "head-jsonld-person-part.html" . -}}
+  "mainEntity": {
+    "@type": "WebSite",
+    "@id": {{ $vars.siteURL }}
+  }
 }
 </script>
 {{- end -}}

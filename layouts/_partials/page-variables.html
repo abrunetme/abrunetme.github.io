@@ -1,4 +1,6 @@
 {{- $siteLang := .Site.Language.Lang -}}
+{{- $siteLangCode := .Site.LanguageCode -}}
+{{- $siteURL := .Site.BaseURL -}}
 {{- $siteDir  := default "ltr" .Site.Language.LanguageDirection -}}
 {{- $siteLastMod := (index (sort .Site.RegularPages ".Lastmod" "desc") 0).Lastmod | default (index (sort .Site.RegularPages "Date" "desc") 0).Date -}}
 
@@ -13,6 +15,8 @@
 {{- $ldType := default "WebPage" .Params.ldType -}}
 {{- if and (eq .Type "posts") (eq .Kind "page") -}}
   {{- $ldType = "BlogPosting" -}}
+{{- else if and (eq .Type "authors") (eq .Kind "page") -}}
+  {{- $ldType = "ProfilePage" -}}
 {{- else if or (eq .Kind "term") (eq .Kind "section") (eq .Kind "taxonomy") -}}
   {{- $ldType = "CollectionPage" -}}
 {{- end -}}
@@ -27,17 +31,18 @@
 
     {{ $page := site.GetPage (printf "authors/%s.md" $id) }}
     {{ $enriched := dict
-        "id"        $id
-        "name"      $author.name
-        "github"    $author.github
-        "linkedin"  $author.linkedin
-        "facebook"  $author.facebook
-        "website"   $author.website
-        "Date"      $page.Date
-        "Lastmod"   $page.Lastmod
-        "Permalink" $page.Permalink
-        "Title"     $page.Title
-        "sameAs"    $sameAs
+        "id"          $id
+        "name"        $author.name
+        "description" $author.description
+        "github"      $author.github
+        "linkedin"    $author.linkedin
+        "facebook"    $author.facebook
+        "website"     $author.website
+        "Date"        $page.Date
+        "Lastmod"     $page.Lastmod
+        "Permalink"   $page.Permalink
+        "Title"       $page.Title
+        "sameAs"      $sameAs
     }}
     {{ $authors = merge $authors (dict $id $enriched)  }}
 {{ end }}
@@ -56,8 +61,10 @@
 
 {{- return dict 
     "siteLang"          $siteLang
+    "siteLangCode"      $siteLangCode
     "siteDir"           $siteDir
     "siteLastMod"       $siteLastMod
+    "siteURL"           $siteURL
 
     "publisher"         $publisher
     "author"            $author
