@@ -2,6 +2,7 @@
 title = "Mentions légales"
 description = "Mentions légales du site abrunet.me"
 date = 2025-10-08
+ldType = "LegalPage"
 +++
 
 **Propriétaire du site**  

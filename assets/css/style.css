@@ -18,19 +18,29 @@ body > footer > p {
     margin-bottom: inherit;
 }
 
+body > header,
 article > header,
-body > header {
+section > header
+{
     border-bottom: none;
     margin-bottom: 0;
     padding-bottom: 0;
 }
 
+body > footer p,
 article > header p,
-body > footer p {
+section > header p
+{
     color: var(--pico-muted-color, #666);
     font-size: .75em;
     margin-top: 0.25rem;
     margin-bottom: 0.75rem;
+}
+
+article > footer {
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
 }
 
 article > :last-child {

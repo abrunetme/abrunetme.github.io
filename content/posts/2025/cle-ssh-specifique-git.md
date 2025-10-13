@@ -11,7 +11,7 @@ C’est par exemple le cas quand un dépôt est associé à une autre identité 
 
 <!--more-->
 
-## Le problème
+### Le problème
 
 Par défaut, Git utilise la première clé SSH disponible (souvent ~/.ssh/id_rsa).
 Si cette clé correspond à un autre compte GitHub, la commande `git push` échouera avec un message du type :
@@ -24,7 +24,7 @@ Veuillez vérifier que vous avez les droits d'accès
 et que le dépôt existe.
 ```
 
-## Solution
+### Solution
 
 Vous pouvez forcer Git à utiliser une clé SSH précise en définissant la variable d’environnement `GIT_SSH_COMMAND` :
 

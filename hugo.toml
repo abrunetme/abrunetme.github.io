@@ -1,7 +1,7 @@
 title = "Site personnel d'Arnaud Brunet"
 enableGitInfo = true
 uglyURLs = true
-languageCode = "fr"
+languageCode = "fr-FR"
 defaultContentLanguage = "fr"
 baseURL = '/'
 

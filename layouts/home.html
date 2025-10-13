@@ -1,5 +1,15 @@
-{{ define "main" }}
-  {{ range (sort (where .Site.RegularPages "Type" "posts") "Lastmod" "desc") }}
-    {{ partial "post/summary.html" . }}
-  {{ end }}
-{{ end }}
+{{- define "content" -}}
+{{- $vars := partial "page-variables.html" . -}}
+
+  {{- range $vars.items -}}
+  <article>
+    {{- partial "page-header.html" . -}}
+    {{- .Summary -}}
+    {{- if .Truncated -}}
+    <footer>
+      <p><a href="{{ .RelPermalink }}">Lire la suite →</a></p>
+    </footer>
+    {{- end -}}
+  </article>
+  {{- end -}}
+{{- end -}}

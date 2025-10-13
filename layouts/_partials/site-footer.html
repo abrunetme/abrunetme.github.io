@@ -1,0 +1,16 @@
+{{- $vars := partial "page-variables.html" . -}}
+
+<footer>
+    <p>
+        {{- $separator := false -}}
+        {{- with .Site.Params.Licence -}}
+        {{- $separator = true }}
+        <a href="/pages/mentions-legales.html" rel="license">{{ . }}</a>
+        {{- end -}}
+
+        {{- with $vars.siteLastMod -}}
+            {{- if $separator -}}&nbsp;·&nbsp;{{- end -}}
+            Dernière mise à jour : {{ .Format "2 Jan 2006" }}
+        {{- end -}}
+    </p>
+</footer>

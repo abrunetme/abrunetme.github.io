@@ -1,0 +1,10 @@
+{{- $vars := partial "page-variables.html" . -}}
+<header>
+    <h2>
+        <a href="{{ $vars.pageURL }}">{{ $vars.pageTitle }}</a>
+    </h2>
+
+    {{- if eq .Kind "page" -}}
+    {{- partial "page-meta.html" . -}}
+    {{- end -}}
+</header>

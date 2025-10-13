@@ -1,16 +1,12 @@
+{{- $vars := partial "page-variables.html" . -}}
 <!DOCTYPE html>
-<html lang="{{ .Site.Language.Lang }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
-{{ partial "head/head.html" . }}
-
+<html lang="{{ $vars.siteLang }}" dir="{{ $vars.siteDir }}">
+{{- partial "head.html" . -}}
 <body>
-    <header>
-        <h1 class="site-title"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
-    </header>
-
+{{- partial "site-header.html" . -}}
     <main>
-        {{ block "main" . }}{{ end }}
+        {{- block "content" . -}}{{- end -}}
     </main>
-
-    {{ partial "site/footer.html" . }}
+{{- partial "site-footer.html" . -}}
 </body>
 </html>

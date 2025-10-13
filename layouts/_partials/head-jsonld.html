@@ -1,0 +1,79 @@
+{{- $vars := partial "page-variables.html" . }}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": {{ .Site.BaseURL }},
+      "name": {{ .Site.Title }},
+      "url": {{ .Site.BaseURL }},
+      "inLanguage": {{ .Site.LanguageCode }},
+      "description": {{ .Site.Params.description }},
+      "dateModified": {{ $vars.siteLastMod.Format "2006-01-02T15:04:05Z" }},
+      "publisher": { 
+        "@type": "Person",
+        "@id": {{ $vars.publisherUrl }},
+        "name": {{ $vars.publisher.name }},
+        "url": {{ $vars.publisherUrl }},
+        "sameAs": {{ $vars.publisherSameAs }}
+      }
+    }
+    </script>
+
+{{- if not (eq $vars.ldType "WebSite") }}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": {{ $vars.ldType }},
+      "@id": {{ $vars.pageURL }},
+      "url": {{ $vars.pageURL }},
+      "name": {{ $vars.pageTitle }},
+      "headline": {{ $vars.pageTitle }},
+      "description": {{ $vars.pageDesc }},
+      "inLanguage": {{ .Site.LanguageCode }},
+      "publisher": { 
+        "@type": "Person",
+        "@id": {{ $vars.publisherUrl }},
+        "name": {{ $vars.publisher.name }}
+      },
+      {{- if eq $vars.ldType "BlogPosting" }}
+      "author": {
+        "@type": "Person",
+        "@id": {{ $vars.authorUrl }},
+        "name": {{ $vars.author.name }},
+        "url": {{ $vars.authorUrl }},
+        "sameAs": {{ $vars.authorSameAs }}
+      },
+      "datePublished": {{ .Date.Format "2006-01-02T15:04:05Z" }},
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": {{ $vars.pageURL }}
+      },
+      {{- with .Params.tags }}
+      "keywords": [
+        {{- range $i, $tag := . -}}
+          {{- if $i }}, {{ end }}"{{ $tag }}"
+        {{- end -}}
+        ],
+      {{- end -}}
+      {{ end }}
+      "dateModified": {{ .Lastmod.Format "2006-01-02T15:04:05Z" }},
+      {{- with $vars.items }}
+      "hasPart": [
+        {{- range $i, $item := . }}
+        {{- if $i }},{{ end }}
+        {
+          "@type": "ListItem",
+          "position": {{ $i }},
+          "url": {{ $item.Permalink }},
+          "name": {{ $item.Title }}
+        }
+        {{- end }}
+      ],
+      {{- end -}}
+      "mainEntity": {
+        "@type": "WebSite",
+        "@id": {{ .Site.BaseURL }}
+      }
+    }
+    </script>
+{{- end -}}

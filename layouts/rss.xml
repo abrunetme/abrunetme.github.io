@@ -1,47 +1,45 @@
-{{ $lastUpdate := (index (sort .Site.RegularPages ".Lastmod" "desc") 0).Lastmod }}
+{{- $vars := partial "page-variables.html" . -}}
 
-{{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+{{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML -}}
 <rss version="2.0" 
      xmlns:atom="http://www.w3.org/2005/Atom"
      xmlns:dc="http://purl.org/dc/elements/1.1/">
 
   <channel>
-    <title>{{ .Site.Title }}</title>
-    <link>{{ .Site.BaseURL }}</link>
-    <description>Contenu récent de {{ .Site.Title }}</description>
-    <language>{{ .Site.Language.LanguageCode }}</language>
+    <title>{{- .Site.Title -}}</title>
+    <link>{{- .Site.BaseURL -}}</link>
+    <description>Contenu récent de {{- .Site.Title -}}</description>
+    <language>{{- .Site.Language.LanguageCode -}}</language>
 
-    {{ with .Site.Params.Licence }}
-    <copyright>{{ . }}</copyright>
-    {{ end }}
+    {{- with .Site.Params.Licence -}}
+    <copyright>{{- . -}}</copyright>
+    {{- end -}}
 
-    {{ with $lastUpdate }}
-    <lastBuildDate>{{ .Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</lastBuildDate>
-    {{ end }}
+    {{- with $vars.siteLastMod -}}
+    <lastBuildDate>{{- .Format "Mon, 02 Jan 2006 15:04:05 -0700" -}}</lastBuildDate>
+    {{- end -}}
 
-    {{ with .OutputFormats.Get "RSS" }}
-    <atom:link href="{{ .Permalink }}" rel="self" type="application/rss+xml" />
-    {{ end }}
+    {{- with .OutputFormats.Get "RSS" -}}
+    <atom:link href="{{- .Permalink -}}" rel="self" type="application/rss+xml" />
+    {{- end -}}
 
-    {{- range (sort (where .Site.RegularPages "Type" "posts") "Lastmod" "desc") }}
+    {{- range $vars.items -}}
     <item>
-      <guid isPermaLink="true">{{ .Permalink }}</guid>
-      <title>{{ .Title }}</title>
-      <link>{{ .Permalink }}</link>
-      <pubDate>{{ (.PublishDate | default .Date).Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate>
+      <guid isPermaLink="true">{{- .Permalink -}}</guid>
+      <title>{{- .Title -}}</title>
+      <link>{{- .Permalink -}}</link>
+      <pubDate>{{- (.PublishDate | default .Date).Format "Mon, 02 Jan 2006 15:04:05 -0700" -}}</pubDate>
 
-      {{ with .Lastmod }}
-      <lastBuildDate>{{ .Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</lastBuildDate>
-      {{ end }}
+      {{- with .Lastmod -}}
+      <lastBuildDate>{{- .Format "Mon, 02 Jan 2006 15:04:05 -0700" -}}</lastBuildDate>
+      {{- end -}}
+      
+      {{- with $vars.author -}}
+      <dc:creator>{{- .name -}}</dc:creator>
+      {{- end -}}
 
-      {{ $authorId := .Params.author | default .Site.Params.publisher }}
-      {{ $author := index site.Data.authors $authorId }}
-      {{ if $author }}
-      <dc:creator>{{ $author.name }}</dc:creator>
-      {{ end }}
-
-      <description>{{ .Summary | transform.XMLEscape | safeHTML }}</description>
+      <description>{{- .Summary | transform.XMLEscape | safeHTML -}}</description>
     </item>
-    {{- end }}
+    {{- end -}}
   </channel>
 </rss>

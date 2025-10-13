@@ -1,0 +1,68 @@
+{{- $siteLang := .Site.Language.Lang -}}
+{{- $siteDir  := default "ltr" .Site.Language.LanguageDirection -}}
+{{- $siteLastMod := (index (sort .Site.RegularPages ".Lastmod" "desc") 0).Lastmod | default (index (sort .Site.RegularPages "Date" "desc") 0).Date -}}
+
+{{- $publisher := index site.Data.authors .Site.Params.publisher -}}
+{{- $publisherSameAs := slice -}}
+{{- with $publisher.github -}}{{- $publisherSameAs = $publisherSameAs | append . -}}{{- end -}}
+{{- with $publisher.linkedin -}}{{- $publisherSameAs = $publisherSameAs | append . -}}{{- end -}}
+{{- with $publisher.facebook -}}{{- $publisherSameAs = $publisherSameAs | append . -}}{{- end -}}
+{{- with $publisher.website -}}{{- $publisherSameAs = $publisherSameAs | append . -}}{{- end -}}
+{{- $publisherUrl := printf "%sauthors/%s.html" .Site.BaseURL $publisher.id -}}
+
+{{- $authorId := default .Site.Params.publisher .Params.author -}}
+{{- $author := index site.Data.authors $authorId -}}
+{{- $authorSameAs := slice -}}
+{{- with $author.github -}}{{- $authorSameAs = $authorSameAs | append . -}}{{- end -}}
+{{- with $author.linkedin -}}{{- $authorSameAs = $authorSameAs | append . -}}{{- end -}}
+{{- with $author.facebook -}}{{- $authorSameAs = $authorSameAs | append . -}}{{- end -}}
+{{- with $author.website -}}{{- $authorSameAs = $authorSameAs | append . -}}{{- end -}}
+{{- $authorUrl := printf "%sauthors/%s.html" .Site.BaseURL $author.id -}}
+
+{{- $pageURL := cond .IsHome .Site.BaseURL .Permalink -}}
+{{- $pageTitle := default .Site.Title .Title -}}
+{{- $pageDesc := .Params.description | default .Site.Params.description | truncate 160 -}}
+{{- $ldType := default "WebPage" .Params.ldType -}}
+{{- $ogType := default "website" .Params.ogType -}}
+
+{{- if and (eq .Type "posts") (eq .Kind "page") -}}
+  {{- $ldType = "BlogPosting" -}}
+  {{- $ogType = "article" -}}
+{{- else if and (eq .Type "authors") (eq .Kind "page") -}}
+  {{- $ldType = "ProfilePage" -}}
+  {{- $ogType = "profile" -}}
+{{- else if (eq .Kind "term") -}}
+  {{- $pageTitle = printf "Articles avec le tag '%s'." (.Title | lower) -}}
+  {{- $pageDesc = printf "Articles avec le tag '%s'." (.Title | lower) -}}
+  {{- $ldType = "CollectionPage" -}}
+{{- end -}}
+
+{{- $items := slice -}}
+{{- if or .IsHome (eq .Kind "rss") -}}
+  {{- $items = sort (where .Site.RegularPages "Type" "posts") "Lastmod" "desc" -}}
+{{- else -}}
+  {{- $items = sort .Pages "Title" "asc" -}}
+{{- end -}}
+
+{{- return dict 
+    "siteLang"          $siteLang
+    "siteDir"           $siteDir
+    "siteLastMod"       $siteLastMod
+
+    "publisher"         $publisher
+    "publisherSameAs"   $publisherSameAs
+    "publisherUrl"      $publisherUrl
+    
+    "author"            $author
+    "authorSameAs"      $authorSameAs
+    "authorUrl"         $authorUrl
+    
+    "pageTitle"         $pageTitle
+    "pageURL"           $pageURL
+    "pageDesc"          $pageDesc
+
+    "ldType"            $ldType
+    "ogType"            $ogType
+
+    "items"             $items
+}}

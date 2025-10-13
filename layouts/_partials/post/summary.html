@@ -1,9 +1,0 @@
-<article>
-    {{ partial "post/header.html" .}}
-
-    {{ .Summary }}
-
-    {{ if .Truncated }}
-        <p><a href="{{ .RelPermalink }}">Lire la suite →</a></p>
-    {{ end }}
-</article>

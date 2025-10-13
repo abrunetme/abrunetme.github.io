@@ -1,0 +1,9 @@
+{{- $vars := partial "page-variables.html" . }}
+    <link rel="canonical" href="{{ $vars.pageURL }}">
+    <link rel="alternate" type="application/rss+xml" href="{{ .Site.BaseURL }}rss.xml" title="Site personnel d'Arnaud Brunet">
+{{- with resources.Get "css/pico.fluid.classless.min.css" | fingerprint }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
+{{- end -}}
+{{- with resources.Get "css/style.css" | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
+{{- end -}}

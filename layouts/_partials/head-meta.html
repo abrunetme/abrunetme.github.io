@@ -1,0 +1,12 @@
+{{- $vars := partial "page-variables.html" . }}
+    <meta name="description" content="{{ $vars.pageDesc }}">
+    <meta name="author" content="{{ $vars.author.name }}">
+{{- with .Params.tags }}
+    <meta name="keywords" content="{{ delimit (apply . "urlize" "." ) "," }}">
+{{- end -}}
+{{- with .Site.Params.googleSiteVerification }}
+    <meta name="google-site-verification" content="{{ . }}" />
+{{- end -}}
+{{- partial "head-open-graph.html" . }}
+{{- partial "head-twitter.html" . }}
+    <meta name="robots" content="index, follow">

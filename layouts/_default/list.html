@@ -1,11 +1,13 @@
-{{ define "main" }}
-<h1>{{ .Title }}</h1>
-
-<ul>
-{{ range .Pages }}
-  <li>
-    <a href="{{ .Permalink }}">{{ .Title }}</a>
-  </li>
-{{ end }}
-</ul>
-{{ end }}
+{{- define "content" -}}
+{{- $vars := partial "page-variables.html" . -}}
+<section>
+  {{- partial "page-header.html" . -}}
+  <ul>
+    {{- range $vars.items -}}
+      <li>
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+      </li>
+    {{- end -}}
+  </ul>
+</section>
+{{- end -}}
