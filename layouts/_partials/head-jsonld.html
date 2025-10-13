@@ -3,6 +3,7 @@
 {{- partial "head-jsonld-website.html" . -}}
 
 {{- if eq $vars.ldType "BlogPosting" -}}
+  {{- partial "head-jsonld-post.html" . -}}
 {{- else if eq $vars.ldType "ProfilePage" -}}
   {{- partial "head-jsonld-profile.html" . -}}
 {{- else -}}
