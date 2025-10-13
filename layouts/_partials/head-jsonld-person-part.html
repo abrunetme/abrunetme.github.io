@@ -1,6 +1,8 @@
+{{- $idSuffix := printf "#%s" (lower .Type) -}}
+
 {{ return dict
     "@type" "Person"
-    "@id" .Permalink
+    "@id" (print .Permalink $idSuffix)
     "name" .name
     "url" .Permalink
     "sameAs" .sameAs
