@@ -36,4 +36,17 @@ Explication :
 * `-i ~/.ssh/autre-cle` → indique la clé privée à utiliser
 * `-o IdentitiesOnly=yes` → empêche SSH d’essayer d’autres clés ou agents
 * `GIT_SSH_COMMAND="..."` → fait en sorte que Git appelle SSH avec ces options
+* `git push` → la commande Git que vous souhaitez exécuter
 
+Vous pouvez aussi définir cette variable d’environnement de façon permanente pour un dépôt spécifique en l’ajoutant dans le fichier `.git/config` du dépôt :
+```ini
+[core]
+    sshCommand = ssh -i ~/.ssh/autre-cle -o IdentitiesOnly=yes
+```
+Ainsi, chaque fois que vous exécuterez une commande Git dans ce dépôt, la clé SSH spécifiée sera utilisée.
+Cela évite d’avoir à définir la variable d’environnement à chaque fois.
+
+## Conclusion
+
+Utiliser une clé SSH spécifique pour un dépôt Git est simple avec la variable d’environnement `GIT_SSH_COMMAND` ou en configurant `sshCommand` dans le fichier `.git/config`.
+Cela permet de gérer facilement plusieurs comptes GitHub sur la même machine sans conflits de clés SSH.
