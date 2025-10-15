@@ -1,3 +1,7 @@
     <header>
-        <h1 class="site-title"><a href="{{ .Site.BaseURL }}">{{- .Site.Title -}}</a></h1>
+        {{- if .IsHome -}}
+            <h1 class="site-title">{{- .Site.Title -}}</h1>
+        {{- else -}}
+            <div class="site-title"><a href="{{ .Site.BaseURL }}">{{- .Site.Title -}}</a></div>
+        {{- end -}}
     </header>

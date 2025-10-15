@@ -1,6 +1,6 @@
 {{- define "content" -}}
 <article>
-    {{- partial "page-header.html" . -}}
+    {{ partial "page-header.html" (dict "page" . "root" $) }}
 
     {{- with index site.Data.authors .Params.id -}}
     <p>{{- .description -}}</p>

@@ -6,7 +6,7 @@ ldType = "LegalPage"
 +++
 
 **Propriétaire du site**  
-Arnaud Brunet  
+[Arnaud Brunet]({{< ref "authors/abrunet.md" >}})  
 Site personnel hébergé sur [GitHub Pages](https://pages.github.com/)
 
 **Adresse du site**  

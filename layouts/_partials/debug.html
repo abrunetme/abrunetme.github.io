@@ -9,10 +9,9 @@
   <p><strong>LD-Type:</strong> {{ $vars.ldType }}</p>
   <p><strong>Pages:</strong> {{ .Pages }}</p>
   <p><strong>Items:</strong> {{ $vars.items }}</p>
+  <p><strong>IsHome:</strong> {{ .IsHome }}</p>
 
   {{ with partial "page-variables.html" . }}
     <pre>{{ printf "%#v" . }}</pre>
   {{ end }}
-
-  <p><strong>Auteurs:</strong> {{ $vars.authors }}</p>
 </section>

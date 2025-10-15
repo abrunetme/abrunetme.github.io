@@ -3,7 +3,7 @@
 
   {{- range $vars.items -}}
   <article>
-    {{- partial "page-header.html" . -}}
+    {{ partial "page-header.html" (dict "page" . "root" $) }}
     {{- .Summary -}}
     {{- if .Truncated -}}
     <footer>

@@ -55,7 +55,9 @@ p, h1, h2 {
     font-size: inherit;
     font-weight: inherit;
     letter-spacing: inherit;
+    line-height: inherit;
     margin-bottom: initial;
+    --pico-color: var(--pico-primary);
 }
 
 

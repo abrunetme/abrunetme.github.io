@@ -1,7 +1,7 @@
 {{- define "content" -}}
 {{- $vars := partial "page-variables.html" . -}}
 <section>
-  {{- partial "page-header.html" . -}}
+  {{ partial "page-header.html" (dict "page" . "root" $) }}
   <ul>
     {{- range $vars.items -}}
       <li>
