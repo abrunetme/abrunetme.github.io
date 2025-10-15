@@ -60,4 +60,11 @@ p, h1, h2 {
     --pico-color: var(--pico-primary);
 }
 
+.page-title {
+    --pico-font-size: 1.5rem;
+    --pico-font-weight: 700;
+    --pico-line-height: 1.2;
+    --pico-color: var(--pico-primary);
+}
+
 

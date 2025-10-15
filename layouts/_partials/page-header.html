@@ -4,9 +4,9 @@
 {{- $vars := partial "page-variables.html" $page -}}
 <header>
     {{- if $root.IsHome -}}
-    <h2><a href="{{ $vars.pageURL }}">{{ $vars.pageTitle }}</a></h2>
+    <h2 class="page-title"><a href="{{ $vars.pageURL }}">{{ $vars.pageTitle }}</a></h2>
     {{- else -}}
-    <h1><a href="{{ $vars.pageURL }}">{{ $vars.pageTitle }}</a></h1>
+    <h1 class="page-title">{{ $vars.pageTitle }}</h1>
     {{- end -}}
 
     {{- if eq $page.Kind "page" -}}
