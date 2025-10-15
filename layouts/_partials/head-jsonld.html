@@ -6,6 +6,6 @@
   {{- partial "head-jsonld-post.html" . -}}
 {{- else if eq $vars.ldType "ProfilePage" -}}
   {{- partial "head-jsonld-profile.html" . -}}
-{{- else -}}
+{{- else if not .IsHome }}
   {{- partial "head-jsonld-page.html" . -}}
 {{- end -}}
