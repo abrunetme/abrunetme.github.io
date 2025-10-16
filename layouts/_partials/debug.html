@@ -7,11 +7,8 @@
   <p><strong>Kind:</strong> {{ .Kind }}</p>
   <p><strong>Type:</strong> {{ .Type }}</p>
   <p><strong>LD-Type:</strong> {{ $vars.ldType }}</p>
-  <p><strong>Pages:</strong> {{ .Pages }}</p>
   <p><strong>Items:</strong> {{ $vars.items }}</p>
-  <p><strong>IsHome:</strong> {{ .IsHome }}</p>
-
-  {{ with partial "page-variables.html" . }}
-    <pre>{{ printf "%#v" . }}</pre>
-  {{ end }}
+  <p><strong>Date:</strong> {{ .Date }}</p>
+  <p><strong>LastMod:</strong> {{ .Lastmod }}</p>
 </section>
+

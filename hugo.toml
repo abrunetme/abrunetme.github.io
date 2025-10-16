@@ -24,6 +24,8 @@ author = "authors"
     noClasses = true
     style = "friendly"
     lineNos = false
+  [markup.goldmark.renderer]
+    unsafe = true
 
 [outputs]
 home = ["HTML", "RSS", "SITEMAP", "ROBOTS"]

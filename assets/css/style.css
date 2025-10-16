@@ -47,8 +47,20 @@ article > :last-child {
   margin-bottom: 0;
 }
 
-p, h1, h2 {
+h1, h2, h3 {
     --pico-typography-spacing-vertical: .5rem;
+}
+
+h1 {
+    --pico-font-size: 1.5rem;
+}
+
+h2 {
+    --pico-font-size: 1.25rem;
+}
+
+h3 {
+    --pico-font-size: 1rem;
 }
 
 .site-title {
@@ -67,4 +79,6 @@ p, h1, h2 {
     --pico-color: var(--pico-primary);
 }
 
-
+.highlight pre {
+    margin-bottom: 0.5rem;
+}
