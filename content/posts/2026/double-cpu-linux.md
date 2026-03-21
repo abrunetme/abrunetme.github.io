@@ -2,7 +2,7 @@
 title = "Gestion des doubles GPUs sous Linux"
 description = "Tutoriel pour configurer un système dual GPU (Intel iGPU + NVIDIA dGPU) sous Linux. Il explique comment utiliser les variables d'environnement pour prioriser l'iGPU au quotidien et basculer manuellement vers le dGPU, rendant les outils dédiés obsolètes."
 date = 2026-03-21
-draft = true
+draft = false
 tags = ["gpu", "intel", "nvidia", "linux", "gentoo", "offload", "prime"]
 +++
 
