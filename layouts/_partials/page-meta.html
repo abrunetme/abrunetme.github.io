@@ -6,7 +6,7 @@
   {{- end -}}
 
   {{- with .Params.tags -}}
-    {{- $tags := first 5 . -}}
+    {{- $tags := first 10 . -}}
     {{- if gt (len $tags) 0 -}}
       &nbsp;·&nbsp;
       {{- range $i, $tag := $tags -}}
