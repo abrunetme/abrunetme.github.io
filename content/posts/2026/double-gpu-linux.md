@@ -16,7 +16,7 @@ L'objectif principal est donc de prioriser le iGPU Intel par rapport au dGPU NVi
 
 ## Monitoring des GPUs
 
-Avant toute modification, il est nécessaire d'observer l'état des deux CPUs.
+Avant toute modification, il est nécessaire d'observer l'état des deux GPUs.
 
 On peut vérifier la présence des GPUs via la commande `lspci`:
 ```bash
@@ -47,22 +47,22 @@ $ nvidia-smi
 +-----------------------------------------------------------------------------------------+
 ```
 
-On peut aussi avoir un détail de l'utilisation en temps réél de chacun des GPUs avec la commande `nvtop`
+On peut aussi avoir un détail de l'utilisation en temps réel de chacun des GPUs avec la commande `nvtop`
 ![nvtop](./screenshot_nvtop.png)
 
-L'état de l'alimentation de chaque des cartes est accessible via les fichiers `/sys/class/drm/card*/device/power_state`. 
+L'état de l'alimentation de chaque carte est accessible via les fichiers `/sys/class/drm/card*/device/power_state`. 
 ```bash
 $ cat /sys/class/drm/card*/device/power_state
 D0
 D3cold
 ```
-L'ordre semble être le même que celui de la commande `lspci`. Pour s'en assurer `cat /sys/class/drm/card*/device/vendor` retourne la liste des fabriquants où la valeur *0x8086* indique Intel et *0x10de* indique NVidia.
+L'ordre semble être le même que celui de la commande `lspci`. Pour s'en assurer, `cat /sys/class/drm/card*/device/vendor` retourne la liste des fabricants où la valeur *0x8086* indique Intel et *0x10de* indique NVIDIA.
 
 Le fichier `power_state` retourne la valeur *D0* lorsque la puce est active, *D3cold* lorsqu'elle est en mode économie.
 
 On peut aussi examiner le fichier `power/runtime_status` pour avoir directement les valeurs *active* ou *suspended*.
 
-On peut aussi voir quel GPU est utilisé les rendus *OpenGL* et *Vulkan* avec les commandes `glxinfo| grep 'OpenGL'` et `vulkaninfo| grep -i driverid`.
+On peut aussi voir quel GPU est utilisé pour les rendus *OpenGL* et *Vulkan* avec les commandes `glxinfo | grep 'OpenGL'` et `vulkaninfo | grep -i 'driverid'`.
 
 Maintenant qu'on peut surveiller les états. Il est temps de passer à la configuration.
 
@@ -70,7 +70,7 @@ Maintenant qu'on peut surveiller les états. Il est temps de passer à la config
 
 Pour que le dGPU Nvidia soit désactivé par défaut, on va utiliser des variables d'environnement. Elles doivent être chargées avant l'interface graphique du système. 
 
-Sous Gentoo, ça passe par la création d'un fichier dans `/etc/env.d`; sur les autres distribution, il faudra surement modifier le fichier `/etc/environment`.
+Sous Gentoo, ça passe par la création d'un fichier dans `/etc/env.d` ; sur les autres distributions, il faudra sûrement modifier le fichier `/etc/environment`.
 
 Fichier `/etc/env.d/00suspend-nvidia-gpu`:
 ```bash
