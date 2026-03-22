@@ -13,25 +13,12 @@ Sur mon ordinateur, je suis le seul utilisateur et j'aimerai ne pas avoir à sai
 
 Si vous utilisez par défaut un gestionnaire de session (GDM, SDDM, LightDM), vous devez les désactiver pour éviter les conflits avec l'autologin personnalisé.
 
-### Identifier le gestionnaire actif
-
-```bash
-systemctl list-units --type=service | grep manager
-```
-
 ### Désactiver le service
 
 Remplacez le nom du service par le vôtre (ex: `gdm`, `sddm`, `lightdm`) :
 
 ```bash
 sudo systemctl disable --now gdm
-```
-
-Pour vérifier qu'il est bien désactivé :
-
-```bash
-systemctl is-active gdm
-# Doit retourner "inactive"
 ```
 
 ## 1. Configurer systemd pour l'autologin
@@ -77,33 +64,42 @@ Puis redémarrez le serveur pour tester :
 sudo reboot
 ```
 
-Après le reboot vous devez arriver sur le `tty1` sans à avoir à vous identifier. La prochaine étape est de lancer automatiquement le server X.
+Après le redémarrage, vous devriez accéder directement au `tty1` sans avoir à saisir vos identifiants. La prochaine étape est de lancer automatiquement le serveur X.
 
 ## 2. Lancer X automatiquement
 
 Une fois l'autologin effectué sur le `TTY` (par `systemd`), le **shell** (ex: `zsh`, `bash`) est lancé. C'est dans ce contexte qu'il faut intervenir pour lancer la session graphique.
 
-Pour ma part, j'utilise `zsh`. Le script suivant doit être placé dans le fichier `~/.zlogin`.
-Si vous utilisez `bash`, le fichier est `~/.bash_profile`.
+Pour ma part, j'utilise `zsh`. Le script suivant doit être placé dans le fichier `~/.zlogin` :
+
+```bash
+$ cat ~/.zlogin
+# Auto startx on TTY1
+if [[ -z $DISPLAY ]] && (( $EUID != 0 )) {
+    [[ ${TTY} == '/dev/tty1' ]] &&
+        startx > ~/.xsession-errors 2>&1 &
+}
+```
 
 Le script vérifie trois conditions avant de lancer `startx` :
 * **Pas d'interface graphique active** : `[[ -z $DISPLAY ]]`
 * **L'utilisateur n'est pas root** : `(( $EUID != 0 ))`
 * **Nous sommes sur le terminal tty1** : `[[ ${TTY} == '/dev/tty1' ]]`.
 
-Puis le lancement du serveur X : `startx >~/.xsession-errors 2>&1 &` :
+Puis lance le serveur X : `startx > ~/.xsession-errors 2>&1 &` :
 * Redirige les erreurs de démarrage de X vers `~/.xsession-errors` pour le débogage.
 * Le `&` lance le processus en arrière-plan pour ne pas bloquer le login.
 
-On fait une redirection des sorties dans `~/.xession-errors` mais le serveur X va aussi écrire ses logs dans `~/.local/share/xorg/Xorg.0.log`.
+
+**Pour Bash** : Si vous utilisez `bash`, placez ce script dans `~/.bash_profile` avec la syntaxe bash correcte :
 
 ```bash
-$ cat ~/.zlogin 
+$ cat ~/.bash_profile
 # Auto startx on TTY1
-if [[ -z $DISPLAY ]] && (( $EUID != 0 )) {
-    [[ ${TTY} == '/dev/tty1' ]] &&
-        startx > ~/.xsession-errors 2>&1 &
-}
+if [[ -z "$DISPLAY" ]] && [[ $EUID -ne 0 ]] && [[ "${TTY}" == '/dev/tty1' ]]
+then
+    startx > ~/.xsession-errors 2>&1 &
+fi
 ```
 
 ## 3. Lancer l'environnement de bureau
