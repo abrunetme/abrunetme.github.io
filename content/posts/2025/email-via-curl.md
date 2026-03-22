@@ -27,7 +27,7 @@ En Bash, nous allons utiliser les commandes `echo` pour générer ces lignes, pu
 
 ## La commande magique
 
-La clé pour que `curl` lise le contenu du message depuis le pipe est l'option --upload-file - (où - signifie lire depuis l'entrée standard).
+La clé pour que `curl` lise le contenu du message depuis le pipe est l'option `--upload-file -` (où `-` signifie lire depuis l'entrée standard).
 
 Voici la structure complète de la commande que vous pouvez lancer dans un terminal :
 ```shell
@@ -36,7 +36,7 @@ SMTP_SERVER="smtp://mon-serveur.mon-domaine.fr"
 EXPEDITEUR="support@mon-domaine.fr"
 DESTINATAIRE="utilisateur@mon-domaine.fr"
 SUJET="Test d'envoi via CURL"
-CORPS_MESSAGE="Ceci est le corps de mon email. Il gère les retours à la ligne si j'utilise \n dans un script."
+CORPS_MESSAGE="Ceci est le corps de mon email. Ils gèrent les retours à la ligne si on utilise \`n\` dans un script."
 
 # La commande complète en une seule ligne
 { 
@@ -82,7 +82,7 @@ La fonction `send_email`ci-dessous repose sur l'utilisation de variables globale
 
 * `$SMTP_MTA`: L'adresse complète de votre serveur SMTP. Ex: `smtp://smtp.mon-domaine.fr`
 * `$SMTP_FROM`: L'adresse utilisée dans l'en-tête From. Ex: `robot@mon-domaine.fr`
-* `$ENV`: Définit l'environnement d'exécution. En TEST, le sujet est préfixé par `[TEST]`et l'email est envoyé à une adresse de substitution.
+* `$ENV`: Définit l'environnement d'exécution. En TEST, le sujet est préfixé par `[TEST]` et l'email est envoyé à une adresse de substitution.
 *  `$EMAIL_TEST`: L'adresse de substitution à utiliser en mode TEST.
 
 **Fonction de journalisation:**
@@ -126,7 +126,7 @@ send_email() {
         echo -e "$content"
     } | curl --silent --mail-from "$SMTP_FROM" --mail-rcpt "$to" --url "$SMTP_MTA" --upload-file - > /dev/null 2>&1
     then
-        log "Echec lors de l'envoi de l'email '$subject' à '$to'"
+        log "Échec lors de l'envoi de l'email '$subject' à '$to'"
         return 1
     fi
 }
