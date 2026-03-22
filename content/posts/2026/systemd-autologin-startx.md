@@ -1,7 +1,7 @@
 ---
 title: "Activer l'autologin avec systemd et démarrer X automatiquement"
 description: "Guide pour configurer systemd-automatiquement l'utilisateur au démarrage et lancer une session graphique via ~/.zlogin."
-date: 2026-01-01
+date: 2026-03-21
 tags: [systemd, autologin, startx, zlogin, cinnamon]
 ---
 
