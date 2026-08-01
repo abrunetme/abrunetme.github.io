@@ -2,7 +2,7 @@
 title: "Pourquoi votre smartphone acheté en Polynésie n'a pas de NFC (Le piège du Honor X7c ALT-LX2)"
 date: 2026-07-31T14:36:00-10:00
 draft: false
-tags: ["Smartphone", "NFC", "Polynésie", "Honor"]
+tags: ["smartphone", "nfc", "polynésie", "honor"]
 summary: "Vous avez acheté un Honor X7c en Polynésie française et l'option NFC est introuvable ? Explications sur la jungle des sous-références constructeurs et l'importation régionale."
 ---
 
