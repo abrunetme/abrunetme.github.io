@@ -8,9 +8,9 @@ summary: "Vous avez acheté un Honor X7c en Polynésie française et l'option NF
 
 C’est le genre de petite surprise dont on se passerait bien. Vous achetez un smartphone récent, vous lisez sur Internet qu'il gère parfaitement le paiement sans contact, et une fois déballé... **impossible de trouver l'option NFC dans les paramètres.**
 
-C'est exactement ce qui m'est arrivé récemment avec le **Honor X7c**. Si vous vivez en Polynésie française (ou plus largement dans la zone Pacifique/Outre-mer) et que vous faites face au même problème, voici pourquoi cela arrive et ce qu'il faut savoir.
-
 <!--more-->
+
+C'est exactement ce qui m'est arrivé récemment avec le **Honor X7c**. Si vous vivez en Polynésie française (ou plus largement dans la zone Pacifique/Outre-mer) et que vous faites face au même problème, voici pourquoi cela arrive et ce qu'il faut savoir.
 
 ## Le mystère de la puce manquante : ALT-LX1 vs ALT-LX2
 
