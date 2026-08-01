@@ -10,8 +10,6 @@ C’est le genre de petite surprise dont on se passerait bien. Vous achetez un s
 
 C'est exactement ce qui m'est arrivé récemment avec le **Honor X7c**. Si vous vivez en Polynésie française (ou plus largement dans la zone Pacifique/Outre-mer) et que vous faites face au même problème, voici pourquoi cela arrive et ce qu'il faut savoir.
 
----
-
 ## Le mystère de la puce manquante : ALT-LX1 vs ALT-LX2
 
 Sur le papier et sur la majorité des fiches techniques qu'on trouve sur le web, le Honor X7c possède une puce NFC.
