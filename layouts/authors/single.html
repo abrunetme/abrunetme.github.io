@@ -2,7 +2,7 @@
 <article>
     {{ partial "page-header.html" (dict "page" . "root" $) }}
 
-    {{- with index site.Data.authors .Params.id -}}
+    {{- with index hugo.Data.authors .Params.id -}}
     <p>{{- .description -}}</p>
 
     <ul class="social-links">

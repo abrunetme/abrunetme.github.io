@@ -3,7 +3,7 @@
     <meta property="og:title" content="{{ $vars.pageTitle }}">
     <meta property="og:url" content="{{ $vars.pageURL }}">
     <meta property="og:description" content="{{ $vars.pageDesc }}">
-    <meta property="og:locale" content="{{ replace .Site.LanguageCode "-" "_" }}">
+    <meta property="og:locale" content="{{ replace .Language.Locale "-" "_" }}">
 {{- if and (eq .Type "posts") (eq .Kind "page") }}
     <meta property="og:type" content="article">
     <meta name="article:author" content="{{ $vars.author.name }}">

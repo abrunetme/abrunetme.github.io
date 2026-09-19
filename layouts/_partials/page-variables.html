@@ -1,7 +1,7 @@
 {{- $siteLang := .Site.Language.Lang -}}
-{{- $siteLangCode := .Site.LanguageCode -}}
+{{- $siteLangCode := .Language.Locale -}}
 {{- $siteURL := .Site.BaseURL -}}
-{{- $siteDir  := default "ltr" .Site.Language.LanguageDirection -}}
+{{- $siteDir  := default "ltr" .Language.Direction -}}
 {{- $siteLastMod := (index (sort .Site.RegularPages ".Lastmod" "desc") 0).Lastmod | default (index (sort .Site.RegularPages "Date" "desc") 0).Date -}}
 
 {{- $ldType := default "WebPage" .Params.ldType -}}
@@ -14,7 +14,7 @@
 {{- end -}}
 
 {{ $authors := slice }}
-{{ range $id, $author := site.Data.authors }}
+{{ range $id, $author := hugo.Data.authors }}
     {{- $sameAs := slice -}}
     {{- with $author.github -}}{{- $sameAs = $sameAs | append . -}}{{- end -}}
     {{- with $author.linkedin -}}{{- $sameAs = $sameAs | append . -}}{{- end -}}

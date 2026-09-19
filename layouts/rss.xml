@@ -9,7 +9,7 @@
     <title>{{- .Site.Title -}}</title>
     <link>{{- .Site.BaseURL -}}</link>
     <description>Contenu récent de {{- .Site.Title -}}</description>
-    <language>{{- .Site.Language.LanguageCode -}}</language>
+    <language>{{- .Language.Locale -}}</language>
 
     {{- with .Site.Params.Licence -}}
     <copyright>{{- . -}}</copyright>
