@@ -101,15 +101,17 @@ sudo systemctl reload apparmor
 DBeaver me servait en Flatpak, mais l'éditeur fournit aussi un **dépôt APT officiel**. Récupérer la clé GPG, ajouter la source, installer comme un paquet natif — et voilà les mises à jour gérées par le système :
 
 ```bash
-sudo apt install dbeaver-ce
+sudo wget -q -O - https://dbeaver.io/debs/dbeaver.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/dbeaver.gpg.key
+echo "deb [signed-by=/etc/apt/keyrings/dbeaver.gpg.key] https://dbeaver.io/debs/dbeaver-ce /" | sudo tee /etc/apt/sources.list.d/dbeaver.list
+sudo apt-get update && sudo apt-get install dbeaver-ce
 ```
 
 ## Remmina : retour au dépôt de la distribution
 
-Remmina, le client RDP/VNC, était lui aussi installé en Flatpak. La version fournie par **le dépôt de la distribution** me suffit largement, sans le surcoût d'un sandbox complet :
+Remmina, le client RDP/VNC, était lui aussi installé en Flatpak. La version fournie par **le dépôt de la distribution** me suffit largement, sans le surcoût d'un sandbox complet. J'ai complété avec les plugins RDP et VNC, eux aussi disponibles dans le dépôt :
 
 ```bash
-sudo apt install remmina
+sudo apt install remmina remmina-plugin-rdp remmina-plugin-vnc
 ```
 
 ## Le grand ménage Flatpak
